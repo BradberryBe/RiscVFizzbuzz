@@ -12,7 +12,6 @@
 .text
     main:
         lw a2, lim                          # load lim into a2
-        addi a6, zero, 0                    # reset i to 0, i = 0 + 0
         addi a3, zero, 15                   # load 15 into a3
         addi a4, zero, 3                    # load 3 into a4
         addi a5, zero, 5					# load 5 into a5
@@ -57,7 +56,7 @@
     
     num:
         addi a0, zero, 1                    # prep a0 for ecall
-        add a1, zero, a7                    # load a6 into a1         
+        add a1, zero, a7                    # load a7 into a1         
         ecall
         jal zero, loopend                   # return to end of loop
 
