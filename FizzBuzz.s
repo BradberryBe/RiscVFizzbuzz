@@ -20,18 +20,18 @@
 
     loop:                                   # The start of the loop
         addi a5, zero, 1                    # FizzFlag = true
-        rem t1, a6, a3                      # t1 = i % 3
+        rem t1, a7, a3                      # t1 = i % 3
         beq t1, zero, fizzprnt              # if i % 3 == 0, goto fizz
     loopmid:                                # Location to jump back to after posting fizz
-        rem t1, a6, a4                      # t1 = i % 5
+        rem t1, a7, a4                      # t1 = i % 5
         beq t1, zero, buzzprnt             # if i % 5 == 0, goto buzz
         bne a5, zero, num                   # if flag = false, goto num
     loopend:
     	addi a0, zero, 4					# prep a0 for string ecall
         la a1, nl                           # load a newline to print
         ecall
-        beq a6, a2, end                     # if i == lim break out
-        addi a6, a6, 1                      # i = i + 1
+        beq a7, a2, end                     # if i == lim break out
+        addi a7, a7, 1                      # i = i + 1
         jal zero, loop                      # start loop
 
     fizzprnt:
@@ -50,7 +50,7 @@
     
     num:
         addi a0, zero, 1                    # prep a0 for ecall
-        add a1, zero, a6                    # load a6 into a1         
+        add a1, zero, a7                    # load a7 into a1         
         ecall
         jal zero, loopend                   
 
